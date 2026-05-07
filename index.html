@@ -55,9 +55,12 @@
         /* Receipt for PNG Export */
         #receipt-wrap { position: absolute; left: -9999px; top: 0; }
         #receipt-content { 
-            width: 500px; padding: 30px; background: white; color: #333; 
-            border: 2px solid var(--deep-rose); font-family: 'Hind Siliguri', sans-serif;
+            width: 550px; padding: 30px; background: white; color: #333; 
+            border: 5px solid var(--deep-rose); font-family: 'Hind Siliguri', sans-serif;
         }
+        .receipt-header { display: flex; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
+        .receipt-logo { width: 80px; height: 80px; object-fit: contain; margin-right: 20px; }
+        .receipt-title-box { text-align: left; }
     </style>
 </head>
 <body>
@@ -77,46 +80,26 @@
     <div class="row g-4">
         <!-- Left Side: Product Info & Images -->
         <div class="col-lg-7">
-            <!-- Image Gallery -->
             <div class="img-grid">
-                <!-- Replace src with your actual image links -->
-                <img src="code 1005.jpg" alt="Dizara Bra 1">
-                <img src="code 1006.jpg" alt="Dizara Bra 2">
+                <img src="code 1005.jpg">
+                <img src="code 1006.jpg">
                 <img src="code 1007.jpg" alt="Dizara Bra 3">
                 <img src="code 1008.jpg" alt="Dizara Bra 4">
             </div>
 
             <div class="feature-box">
                 <h3 class="fw-bold mb-4">🏆 কেন Dizara Front Button Bra আপনার সেরা পছন্দ?</h3>
-                
                 <div class="feature-item">
                     <h5>১. স্মার্ট ফ্রন্ট-বাটন ডিজাইন (Easy to Wear)</h5>
-                    <p>পেছনের হুক লাগানোর ঝামেলা আর নয়! আমাদের এই ব্রা-তে রয়েছে সামনের দিকে মজবুত বাটন সিস্টেম, যা আপনাকে দেয় ঝটপট পরা এবং খোলার সুবিধা।</p>
+                    <p>পেছনের হুক লাগানোর ঝামেলা আর নয়! আমাদের এই ব্রা-তে রয়েছে সামনের দিকে মজবুত বাটন সিস্টেম।</p>
                 </div>
-
                 <div class="feature-item">
                     <h5>২. ১০০% প্রিমিয়াম স্কিন-ফ্রেন্ডলি কটন</h5>
-                    <p>উচ্চমানের কটন ফেব্রিক দিয়ে তৈরি। এটি অত্যন্ত নরম এবং বাতাস চলাচলে সক্ষম, যা সারাদিন আপনার ত্বককে রাখবে ঘামমুক্ত এবং র‍্যাশ থেকে নিরাপদ।</p>
+                    <p>উচ্চমানের কটন ফেব্রিক দিয়ে তৈরি যা আপনাকে রাখবে ঘামমুক্ত।</p>
                 </div>
-
                 <div class="feature-item">
-                    <h5>৩. সরাসরি আমদানিকৃত (Quality Assured)</h5>
-                    <p>সরাসরি আমাদের নিজস্ব ফ্যাক্টরি থেকে ইমপোর্ট করি বলে আমরা পণ্যের মান এবং ফিনিশিং নিয়ে শতভাগ নিশ্চয়তা দিতে পারি।</p>
-                </div>
-
-                <div class="feature-item">
-                    <h5>৪. সায়েন্টিফিক ফিটিং ও পারফেক্ট সাপোর্ট</h5>
-                    <p>বিশেষ কাটিং আপনার ফিগারকে দেয় সুন্দর শেপ। এতে কোনো তার (Wire) নেই, তাই স্তনে কোনো ব্যথার সৃষ্টি করে না।</p>
-                </div>
-
-                <div class="feature-item">
-                    <h5>৫. বিশাল সাইজ রেঞ্জ (৩২ থেকে ৪৬)</h5>
-                    <p>৩২ থেকে শুরু করে ৪৬ পর্যন্ত প্রতিটি সাইজ সবসময় রেডি স্টক থাকে। আপনার সঠিক সাইজটি বেছে নেওয়া এখন অনেক সহজ।</p>
-                </div>
-
-                <div class="feature-item">
-                    <h5>৬. কালার গ্যারান্টি ও স্থায়িত্ব</h5>
-                    <p>রঙ উঠবে না এবং দীর্ঘস্থায়ী ইলাস্টিকের কারণে এটি হবে আপনার দীর্ঘদিনের বিশ্বস্ত সঙ্গী।</p>
+                    <h5>৩. বিশাল সাইজ রেঞ্জ (৩২ থেকে ৪৬)</h5>
+                    <p>৩২ থেকে ৪৬ পর্যন্ত প্রতিটি সাইজ সবসময় রেডি স্টক থাকে।</p>
                 </div>
             </div>
 
@@ -204,24 +187,37 @@
 <!-- Hidden Receipt for PNG Export -->
 <div id="receipt-wrap">
     <div id="receipt-content">
-        <div class="text-center" style="border-bottom: 2px solid #e84393; padding-bottom: 10px; margin-bottom: 15px;">
-            <h2 style="color: #e84393; margin:0;">Dizara Dealers Jashore</h2>
-            <p style="margin:0;">অর্ডার ইনভয়েস / Receipt</p>
+        <div class="receipt-header">
+            <!-- আপনার লোগোর লিঙ্ক এখানে দিন -->
+            <img src="Dizara logo.jpg" class="receipt-logo" alt="Logo">
+            <div class="receipt-title-box">
+                <h2 style="color: #e84393; margin:0; font-weight: 800;">Dizara Dealers Jashore</h2>
+                <p style="margin:0; font-size: 18px; color: #555;">অর্ডার ইনভয়েস / Official Receipt</p>
+            </div>
         </div>
-        <div style="font-size: 14px; margin-bottom: 15px;">
-            <p><strong>নাম:</strong> <span id="r_name"></span></p>
-            <p><strong>ফোন:</strong> <span id="r_phone"></span></p>
-            <p><strong>তারিখ:</strong> <span id="r_date"></span></p>
+        
+        <div style="background: #fdf2f5; padding: 15px; border-radius: 10px; margin-bottom: 20px; font-size: 15px;">
+            <p style="margin-bottom: 5px;"><strong>গ্রাহকের নাম:</strong> <span id="r_name"></span></p>
+            <p style="margin-bottom: 5px;"><strong>মোবাইল:</strong> <span id="r_phone"></span></p>
+            <p style="margin-bottom: 0;"><strong>অর্ডার তারিখ:</strong> <span id="r_date"></span></p>
         </div>
-        <table class="table table-bordered small">
-            <thead class="table-light"><tr><th>বিবরণ (Size-Color)</th><th>পরিমাণ</th></tr></thead>
+
+        <table class="table table-bordered">
+            <thead style="background-color: #e84393; color: white;">
+                <tr>
+                    <th>পণ্য (Size-Color)</th>
+                    <th class="text-center">পরিমাণ</th>
+                </tr>
+            </thead>
             <tbody id="r_items"></tbody>
         </table>
-        <div class="text-end fw-bold" style="font-size: 16px;">
-            <p>মোট বিল: <span id="r_total"></span> ৳</p>
+
+        <div style="border-top: 2px dashed #e84393; padding-top: 15px; text-align: right;">
+            <h4 class="fw-bold">মোট বিল: <span id="r_total" style="color: #e84393;"></span> ৳</h4>
         </div>
-        <div class="text-center mt-3 small">
-            <p>আমাদের ওপর আস্থা রাখার জন্য ধন্যবাদ।</p>
+
+        <div class="text-center mt-4" style="border-top: 1px solid #eee; pt-3">
+            <p style="font-size: 12px; color: #888;">ধন্যবাদ আমাদের সাথে থাকার জন্য। পণ্য বুঝে পেয়ে ডেলিভারি ম্যানকে টাকা পরিশোধ করুন।</p>
         </div>
     </div>
 </div>
@@ -257,12 +253,12 @@
         document.getElementById('totalBill').innerText = pPrice + ship;
     }
 
-    // Function to download receipt as PNG
     async function downloadReceipt() {
         const element = document.getElementById('receipt-content');
-        const canvas = await html2canvas(element);
+        // স্কেল ২ দিলে ছবির কোয়ালিটি অনেক পরিষ্কার আসে
+        const canvas = await html2canvas(element, { scale: 2 });
         const link = document.createElement('a');
-        link.download = 'Dizara-Receipt-' + Date.now() + '.png';
+        link.download = 'Dizara-Invoice-' + Date.now() + '.png';
         link.href = canvas.toDataURL('image/png');
         link.click();
     }
@@ -274,11 +270,10 @@
             title: 'অর্ডার কনফার্ম?',
             icon: 'question',
             showCancelButton: true,
-            confirmButtonText: 'হ্যাঁ, দিন',
-            cancelButtonText: 'না'
+            confirmButtonText: 'হ্যাঁ, কনফার্ম',
+            cancelButtonText: 'বাতিল'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Show Loading
                 document.getElementById('loadingOverlay').style.display = 'flex';
                 const btn = document.getElementById('submitBtn');
                 btn.disabled = true;
@@ -294,11 +289,10 @@
                 const cl = document.getElementsByName('color[]');
                 const qt = document.getElementsByName('qty[]');
                 for(let i=0; i<sz.length; i++){
-                    items += `<tr><td>${sz[i].value} - ${cl[i].value}</td><td>${qt[i].value} টি</td></tr>`;
+                    items += `<tr><td style="padding: 12px;">${sz[i].value} - ${cl[i].value}</td><td class="text-center" style="padding: 12px;">${qt[i].value} টি</td></tr>`;
                 }
                 document.getElementById('r_items').innerHTML = items;
 
-                // Form Data Send
                 const formData = new FormData(this);
                 formData.append('total_bill', document.getElementById('totalBill').innerText);
 
@@ -309,19 +303,19 @@
                     document.getElementById('loadingOverlay').style.display = 'none';
                     Swal.fire({
                         title: 'অর্ডার সফল!',
-                        text: 'আপনার অর্ডারটি গ্রহণ করা হয়েছে। রিসিটটি ডাউনলোড করে রাখুন।',
+                        text: 'আপনার অর্ডারটি গ্রহণ করা হয়েছে। রিসিটটি সেভ করে রাখুন।',
                         icon: 'success',
                         showCancelButton: true,
                         confirmButtonText: 'রিসিট (PNG) ডাউনলোড',
                         cancelButtonText: 'বন্ধ করুন'
                     }).then((res) => {
                         if (res.isConfirmed) downloadReceipt();
-                        setTimeout(() => location.reload(), 3000);
+                        setTimeout(() => location.reload(), 4000);
                     });
                 })
                 .catch(error => {
                     document.getElementById('loadingOverlay').style.display = 'none';
-                    Swal.fire('দুঃখিত!', 'ইন্টারনেট সমস্যা। আবার চেষ্টা করুন।', 'error');
+                    Swal.fire('দুঃখিত!', 'সার্ভার সমস্যা। আবার চেষ্টা করুন।', 'error');
                     btn.disabled = false;
                 });
             }
