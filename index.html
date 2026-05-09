@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dizara Dealers Jashore - Luxury Collection</title>
+    
+    <!-- ফেবআইকন (Favicon) -->
+    <link rel="icon" type="image/jpg" href="dizara logo.jpg">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -18,21 +22,54 @@
         }
         
         body { background-color: var(--soft-bg); font-family: 'Hind Siliguri', sans-serif; color: var(--dark-text); }
-        .brand-header { background: #fff; padding: 20px 0; border-bottom: 3px solid var(--accent-pink); position: sticky; top: 0; z-index: 1000; }
-        .brand-name { font-family: 'Poppins', sans-serif; color: var(--deep-rose); font-weight: 800; text-transform: uppercase; margin: 0; font-size: 1.8rem; }
         
-        /* Product Gallery */
+        /* প্রফেশনাল হেডার স্টাইল */
+        .brand-header { 
+            background: #fff; 
+            padding: 15px 0; 
+            border-bottom: 3px solid var(--accent-pink); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .header-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--accent-pink);
+        }
+        .brand-name { 
+            font-family: 'Poppins', sans-serif; 
+            color: var(--deep-rose); 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            margin: 0; 
+            font-size: 1.8rem; 
+            letter-spacing: 1px;
+        }
+
+        /* অন্যান্য স্টাইল (অপরিবর্তিত) */
         .img-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
         .img-grid img { width: 100%; border-radius: 15px; border: 2px solid #eee; transition: 0.3s; }
         .img-grid img:hover { border-color: var(--accent-pink); transform: scale(1.02); }
 
-        /* Features Styling */
         .feature-box { background: #fff; border-radius: 20px; padding: 25px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .feature-item { margin-bottom: 20px; border-left: 4px solid var(--deep-rose); padding-left: 15px; }
         .feature-item h5 { color: var(--deep-rose); font-weight: 700; margin-bottom: 5px; }
         
         .offer-card { background: linear-gradient(135deg, #e84393 0%, #fd79a8 100%); color: #fff; border-radius: 20px; padding: 25px; margin-bottom: 30px; box-shadow: 0 15px 35px rgba(232, 67, 147, 0.3); }
-        .order-container { background: #fff; border-radius: 25px; padding: 30px; border: 1px solid #fce4ec; box-shadow: 0 20px 40px rgba(0,0,0,0.05); position: sticky; top: 100px; }
+        .order-container { background: #fff; border-radius: 25px; padding: 30px; border: 1px solid #fce4ec; box-shadow: 0 20px 40px rgba(0,0,0,0.05); position: sticky; top: 120px; }
         
         .variant-item { background: #fff5f7; border: 1px solid #ffdde1; border-radius: 15px; position: relative; margin-bottom: 15px; padding: 15px; }
         .remove-btn { position: absolute; top: -8px; right: -8px; background: #ff7675; color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 25px; cursor: pointer; font-weight: bold; border: 2px solid #fff; }
@@ -44,13 +81,11 @@
         .shipping-option { cursor: pointer; border: 2px solid #f1f1f1; transition: 0.3s; padding: 15px; width: 100%; text-align: center; border-radius: 10px; display: block; }
         input[name="shipping"]:checked + label { border-color: var(--accent-pink); background: #fff0f3; }
 
-        /* Contact & Footer Styling */
         .contact-section { background: #fff; border-radius: 20px; padding: 40px 20px; margin-top: 50px; box-shadow: 0 -10px 30px rgba(0,0,0,0.02); border-top: 5px solid var(--deep-rose); }
         .contact-info { color: var(--dark-text); font-size: 1.1rem; }
         .contact-info a { color: var(--deep-rose); text-decoration: none; font-weight: 600; }
         footer { background: #2d3436; color: #dfe6e9; padding: 20px 0; font-size: 0.9rem; }
 
-        /* Loading Overlay */
         #loadingOverlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9);
             display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 9999;
@@ -58,7 +93,6 @@
         .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--deep-rose); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Receipt for PNG Export */
         #receipt-wrap { position: absolute; left: -9999px; top: 0; }
         #receipt-content { 
             width: 550px; padding: 30px; background: white; color: #333; 
@@ -74,16 +108,20 @@
 <div id="loadingOverlay">
     <div class="spinner mb-3"></div>
     <h4 class="fw-bold text-dark">আপনার অর্ডারটি প্রসেস হচ্ছে...</h4>
-    <p>দয়া করে কিছুক্ষণ অপেক্ষা করুন</p>
+    <p>দয়া করে কিছুক্ষণ অপেক্ষা করুন</p>
 </div>
 
-<div class="brand-header text-center mb-4">
-    <h1 class="brand-name">Dizara Dealers Jashore</h1>
-</div>
+<!-- প্রফেশনাল হেডার সেকশন -->
+<header class="brand-header mb-4">
+    <div class="header-container">
+        <img src="dizara logo.jpg" alt="Dizara Logo" class="header-logo">
+        <h1 class="brand-name">Dizara Dealers Jashore</h1>
+    </div>
+</header>
 
 <div class="container mb-5">
     <div class="row g-4">
-        <!-- Left Side -->
+        <!-- Left Side: Product Gallery & Features -->
         <div class="col-lg-7">
             <div class="img-grid">
                 <img src="code 1005.jpg">
@@ -104,7 +142,7 @@
                 </div>
                 <div class="feature-item">
                     <h5>৩. বিশাল সাইজ রেঞ্জ (৩২ থেকে ৪৬)</h5>
-                    <p>৩২ থেকে ৪৬ পর্যন্ত প্রতিটি সাইজ সবসময় রেডি স্টক থাকে।</p>
+                    <p>৩২ থেকে ৪৬ পর্যন্ত প্রতিটি সাইজ সবসময় রেডি স্টক থাকে।</p>
                 </div>
             </div>
 
@@ -119,7 +157,7 @@
             </div>
         </div>
 
-        <!-- Right Side: Form -->
+        <!-- Right Side: Order Form -->
         <div class="col-lg-5">
             <div class="order-container">
                 <h4 class="fw-bold mb-4 text-center">অর্ডার ফর্মটি পূরণ করুন</h4>
@@ -187,7 +225,7 @@
         </div>
     </div>
 
-    <!-- New Contact Us Section -->
+    <!-- Contact Us Section -->
     <div class="contact-section text-center">
         <h3 class="fw-bold mb-4" style="color: var(--deep-rose);">আমাদের সাথে যোগাযোগ করুন</h3>
         <div class="row">
@@ -208,21 +246,20 @@
     </div>
 </div>
 
-<!-- Footer with Copyright -->
 <footer class="text-center">
     <div class="container">
         <p class="mb-0">© ২০২৬ সর্বস্বত্ব সংরক্ষিত | <b>Dizara Dealers Jashore</b></p>
     </div>
 </footer>
 
-<!-- Hidden Receipt Content -->
+<!-- Hidden Receipt Section -->
 <div id="receipt-wrap">
     <div id="receipt-content">
         <div class="receipt-header">
-            <img src="Dizara logo.jpg" class="receipt-logo" alt="Logo">
+            <img src="dizara logo.jpg" class="receipt-logo" alt="Logo">
             <div class="receipt-title-box">
                 <h2 style="color: #e84393; margin:0; font-weight: 800;">Dizara Dealers Jashore</h2>
-                <p style="margin:0; font-size: 18px; color: #555;">অর্ডার ইনভয়েস / Official Receipt</p>
+                <p style="margin:0; font-size: 18px; color: #555;">অর্ডার ইনভয়েস / Official Receipt</p>
             </div>
         </div>
         
@@ -246,8 +283,8 @@
             <h4 class="fw-bold">মোট বিল: <span id="r_total" style="color: #e84393;"></span> ৳</h4>
         </div>
 
-        <div class="text-center mt-4" style="border-top: 1px solid #eee; pt-3">
-            <p style="font-size: 12px; color: #888;">ধন্যবাদ আমাদের সাথে থাকার জন্য। পণ্য বুঝে পেয়ে ডেলিভারি ম্যানকে টাকা পরিশোধ করুন।</p>
+        <div class="text-center mt-4" style="border-top: 1px solid #eee; padding-top: 15px;">
+            <p style="font-size: 12px; color: #888;">ধন্যবাদ আমাদের সাথে থাকার জন্য। পণ্য বুঝে পেয়ে ডেলিভারি ম্যানকে টাকা পরিশোধ করুন।</p>
         </div>
     </div>
 </div>
@@ -331,7 +368,7 @@
                     document.getElementById('loadingOverlay').style.display = 'none';
                     Swal.fire({
                         title: 'অর্ডার সফল!',
-                        text: 'আপনার অর্ডারটি গ্রহণ করা হয়েছে। রিসিটটি সেভ করে রাখুন।',
+                        text: 'আপনার অর্ডারটি গ্রহণ করা হয়েছে। রিসিটটি সেভ করে রাখুন।',
                         icon: 'success',
                         showCancelButton: true,
                         confirmButtonText: 'রিসিট (PNG) ডাউনলোড',
