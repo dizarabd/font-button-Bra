@@ -3,264 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dizara Dealers Jashore - Premium Collection</title>
+    <title>Dizara Dealers Jashore - Luxury Collection</title>
     
-    <!-- ফেবআইকন -->
+    <!-- Favicon -->
     <link rel="icon" type="image/jpg" href="dizara logo.jpg">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
     <style>
         :root { 
-            --primary-rose: #e84393; 
             --accent-pink: #fd79a8; 
-            --dark-gray: #2d3436;
-            --light-bg: #fdfbfb;
+            --deep-rose: #e84393; 
+            --soft-bg: #fffafa; 
+            --dark-text: #2d3436; 
         }
         
-        body { background-color: var(--light-bg); font-family: 'Hind Siliguri', sans-serif; color: var(--dark-gray); overflow-x: hidden; }
+        body { background-color: var(--soft-bg); font-family: 'Hind Siliguri', sans-serif; color: var(--dark-text); overflow-x: hidden; }
         
-        /* প্রফেশনাল হেডার */
-        .brand-header { 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(10px);
-            padding: 12px 0; 
-            border-bottom: 1px solid rgba(232, 67, 147, 0.1); 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        .header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
-        .logo-box { display: flex; align-items: center; gap: 15px; }
-        .header-logo { width: 50px; height: 50px; object-fit: cover; border-radius: 50%; border: 2px solid var(--primary-rose); }
-        .brand-name { font-family: 'Poppins', sans-serif; color: var(--primary-rose); font-weight: 800; font-size: 1.5rem; margin: 0; letter-spacing: -0.5px; }
-        
-        /* ট্রাস্ট ব্যাজ */
-        .trust-badges { display: flex; gap: 15px; font-size: 0.8rem; font-weight: 600; }
-        .badge-item { display: flex; align-items: center; gap: 5px; color: #555; }
-        .badge-item i { color: var(--primary-rose); }
+        /* Smooth Fade-in Animation */
+        .fade-in { animation: fadeIn 1s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* প্রোডাক্ট কার্ড ও গ্রিড */
+        /* Professional Header */
+        .brand-navbar {
+            background: #fff;
+            padding: 12px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--deep-rose);
+        }
+        .nav-container { display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .nav-logo { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-pink); }
+        .nav-brand-name { font-family: 'Poppins', sans-serif; color: var(--deep-rose); font-weight: 800; font-size: 1.5rem; margin: 0; letter-spacing: 1px; }
+
+        /* Product Gallery */
         .img-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px; }
-        .img-grid img { width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.4s; cursor: pointer; }
-        .img-grid img:hover { transform: translateY(-5px); }
+        .img-grid img { width: 100%; border-radius: 12px; border: 2px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.4s; cursor: pointer; }
+        .img-grid img:hover { transform: scale(1.03); border-color: var(--accent-pink); }
 
-        /* অফার কার্ড */
-        .offer-card { 
-            background: linear-gradient(135deg, #2d3436 0%, #444 100%); 
-            color: #fff; border-radius: 18px; padding: 25px; margin-bottom: 30px; 
-            border-left: 5px solid var(--primary-rose);
-        }
-        .price-tag { background: rgba(232, 67, 147, 0.2); border: 1px solid var(--primary-rose); border-radius: 10px; padding: 8px; font-weight: 700; color: #ffb8d1; }
-
-        /* অর্ডার ফরম */
-        .order-container { background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.07); border: 1px solid #eee; }
-        .form-label { font-weight: 600; font-size: 0.9rem; color: #444; }
-        .form-control:focus { border-color: var(--primary-rose); box-shadow: 0 0 0 0.25rem rgba(232, 67, 147, 0.1); }
+        /* Feature Cards */
+        .feature-box { background: #fff; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+        .feature-item { position: relative; padding-left: 50px; margin-bottom: 25px; }
+        .feature-item i { position: absolute; left: 0; top: 0; font-size: 1.8rem; color: var(--deep-rose); }
+        .feature-item h5 { font-weight: 700; color: #333; margin-bottom: 8px; }
         
-        /* ফ্লোটিং অর্ডার বাটন (Mobile Only) */
-        .mobile-cta {
-            position: fixed; bottom: 20px; left: 20px; right: 20px; z-index: 999;
-            display: none;
-        }
-        .btn-glow {
-            background: linear-gradient(to right, #ff416c, #ff4b2b);
-            color: white; border: none; padding: 15px; border-radius: 50px;
-            font-weight: 700; width: 100%; box-shadow: 0 10px 20px rgba(255, 65, 108, 0.4);
-            text-decoration: none; text-align: center;
-        }
+        /* Offer Section */
+        .offer-card { background: linear-gradient(135deg, #e84393 0%, #fd79a8 100%); color: #fff; border-radius: 20px; padding: 25px; margin-bottom: 30px; position: relative; overflow: hidden; }
+        .offer-card::after { content: ''; position: absolute; top: -50%; right: -20%; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%; }
 
-        @media (max-width: 768px) {
-            .mobile-cta { display: block; }
-            .trust-badges { display: none; }
-            .brand-name { font-size: 1.2rem; }
-        }
+        /* Order Form Container */
+        .order-container { background: #fff; border-radius: 25px; padding: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); border: 1px solid #fce4ec; }
+        .variant-item { background: #fff8f9; border: 1.5px dashed var(--accent-pink); border-radius: 15px; padding: 15px; margin-bottom: 15px; position: relative; }
+        .remove-btn { position: absolute; top: -10px; right: -10px; background: #ff4757; color: #fff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
-        /* রিসিপ্ট স্টাইল */
-        #receipt-content { width: 500px; padding: 40px; background: #fff; }
+        /* Trust Badges */
+        .trust-badge { display: flex; justify-content: space-around; margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 15px; font-size: 0.85rem; font-weight: 600; }
+        .badge-item { text-align: center; color: #555; }
+        .badge-item i { display: block; font-size: 1.5rem; color: #27ae60; margin-bottom: 5px; }
+
+        .btn-confirm { background: linear-gradient(45deg, #27ae60, #2ecc71); border: none; padding: 18px; border-radius: 12px; font-size: 1.25rem; font-weight: 700; color: #fff; width: 100%; transition: 0.3s; box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3); }
+        .btn-confirm:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(46, 204, 113, 0.4); }
+
+        footer { background: #2d3436; color: #fff; padding: 25px 0; margin-top: 60px; }
+        
+        #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; }
+        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--deep-rose); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Receipt Style */
+        #receipt-wrap { position: absolute; left: -9999px; }
+        #receipt-content { width: 500px; padding: 40px; background: #fff; border: 10px solid var(--deep-rose); font-family: 'Hind Siliguri', sans-serif; }
     </style>
 </head>
 <body>
 
-<!-- Mobile Floating CTA -->
-<div class="mobile-cta">
-    <a href="#orderForm" class="btn-glow">অর্ডার করতে নিচে ক্লিক করুন</a>
+<div id="loadingOverlay">
+    <div class="spinner mb-3"></div>
+    <h4 class="fw-bold">আপনার অর্ডারটি প্রসেস হচ্ছে...</h4>
+    <p>দয়া করে কিছুক্ষণ অপেক্ষা করুন</p>
 </div>
 
-<header class="brand-header">
-    <div class="header-container">
-        <div class="logo-box">
-            <img src="dizara logo.jpg" alt="Dizara Logo" class="header-logo">
-            <h1 class="brand-name">DIZARA JASHORE</h1>
-        </div>
-        <div class="trust-badges">
-            <div class="badge-item"><i class="fas fa-truck"></i> দ্রুত ডেলিভারি</div>
-            <div class="badge-item"><i class="fas fa-shield-halved"></i> ১০০% অরিজিনাল</div>
-        </div>
+<!-- Professional Navbar -->
+<nav class="brand-navbar">
+    <div class="container nav-container">
+        <img src="dizara logo.jpg" alt="Dizara Logo" class="nav-logo">
+        <h1 class="nav-brand-name">Dizara Dealers Jashore</h1>
     </div>
-</header>
+</nav>
 
-<div class="container mt-4 mb-5">
+<div class="container mt-5 mb-5 fade-in">
     <div class="row g-4">
+        <!-- Left Side: Visuals & Content -->
         <div class="col-lg-7">
-            <!-- ইমেজ গ্যালারি -->
             <div class="img-grid">
-                <img src="code 1005.jpg" alt="Item 1">
-                <img src="code 1006.jpg" alt="Item 2">
-                <img src="code 1007.jpg" alt="Item 3">
-                <img src="code 1008.jpg" alt="Item 4">
+                <img src="code 1005.jpg">
+                <img src="code 1006.jpg">
+                <img src="code 1007.jpg">
+                <img src="code 1008.jpg">
             </div>
 
-            <!-- আকর্ষণীয় অফার সেকশন -->
-            <div class="offer-card">
-                <h4 class="fw-bold mb-3"><i class="fas fa-bolt text-warning"></i> লিমিটেড টাইম ধামাকা অফার!</h4>
-                <div class="row g-3">
-                    <div class="col-6"><div class="price-tag text-center">১ পিস: ৫৩০৳</div></div>
-                    <div class="col-6"><div class="price-tag text-center">২ পিস: ৯৫০৳</div></div>
-                    <div class="col-12">
-                        <div class="p-2 rounded-3 text-center" style="background: var(--primary-rose); color: white; font-weight: 700;">
-                            🔥 ৪ পিস বা তার বেশি কিনলে প্রতি পিস মাত্র ৪২০৳
-                        </div>
-                    </div>
+            <div class="feature-box">
+                <h3 class="fw-bold mb-4 text-center">কেন আমাদের ব্রা সেরা? ✨</h3>
+                <div class="feature-item">
+                    <i class="fas fa-magic"></i>
+                    <h5>স্মার্ট ফ্রন্ট-বাটন ডিজাইন</h5>
+                    <p class="text-muted">পেছনের হুক লাগানোর ঝামেলাহীন আধুনিক ফ্রন্ট বাটন সিস্টেম।</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-leaf"></i>
+                    <h5>১০০% আরামদায়ক কটন</h5>
+                    <p class="text-muted">উচ্চমানের কটন ফেব্রিক যা আপনাকে সারাদিন রাখবে সতেজ ও ঘামমুক্ত।</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <h5>পারফেক্ট ফিটিং (Size 32-46)</h5>
+                    <p class="text-muted">প্রতিটি সাইজ নিখুঁতভাবে তৈরি করা হয়েছে বডির সঠিক শেইপ ধরে রাখতে।</p>
                 </div>
             </div>
 
-            <!-- প্রফেশনাল ফিচার লিস্ট -->
-            <div class="bg-white p-4 rounded-4 shadow-sm mb-4">
-                <h4 class="fw-bold mb-4 border-bottom pb-2">কেন আমাদের ব্রা সেরা?</h4>
-                <div class="d-flex gap-3 mb-3">
-                    <i class="fas fa-check-circle mt-1 text-success fs-5"></i>
-                    <div>
-                        <h6 class="fw-bold mb-0">ফ্রন্ট বাটন সুবিধা</h6>
-                        <p class="text-muted small">সহজে পরার জন্য সামনে মজবুত মেটাল বাটন।</p>
-                    </div>
-                </div>
-                <div class="d-flex gap-3 mb-3">
-                    <i class="fas fa-check-circle mt-1 text-success fs-5"></i>
-                    <div>
-                        <h6 class="fw-bold mb-0">১০০% কমফোর্ট কটন</h6>
-                        <p class="text-muted small">গরমের দিনেও আপনাকে রাখবে প্রশান্তিতে।</p>
-                    </div>
-                </div>
-                <div class="d-flex gap-3">
-                    <i class="fas fa-check-circle mt-1 text-success fs-5"></i>
-                    <div>
-                        <h6 class="fw-bold mb-0">পারফেক্ট ফিটিং</h6>
-                        <p class="text-muted small">৩২ থেকে ৪৬ সব সাইজ এভেলেবল।</p>
-                    </div>
+            <div class="offer-card text-center">
+                <h4 class="fw-bold mb-3"><i class="fas fa-bolt"></i> স্পেশাল ডিসকাউন্ট অফার!</h4>
+                <div class="row g-2 justify-content-center">
+                    <div class="col-6 col-md-4"><div class="bg-white text-dark p-2 rounded-3">১ পিস: <b>৫৩০৳</b></div></div>
+                    <div class="col-6 col-md-4"><div class="bg-white text-dark p-2 rounded-3">২ পিস: <b>৯৫০৳</b></div></div>
+                    <div class="col-6 col-md-4"><div class="bg-white text-dark p-2 rounded-3">৩ পিস: <b>১২৮০৳</b></div></div>
+                    <div class="col-11 mt-3"><div class="bg-warning text-dark p-2 rounded-3 fw-bold">৪ পিস বা তার বেশি: প্রতি পিস মাত্র ৪২০৳</div></div>
                 </div>
             </div>
         </div>
 
-        <!-- অর্ডার ফরম -->
+        <!-- Right Side: Sticky Order Form -->
         <div class="col-lg-5">
-            <div class="order-container" id="order-box">
-                <div class="text-center mb-4">
-                    <h4 class="fw-bold">অর্ডার কনফার্ম করুন</h4>
-                    <p class="text-muted small">নিচের তথ্যগুলো সঠিক ভাবে পূরণ করুন</p>
-                </div>
-                
+            <div class="order-container">
+                <h4 class="fw-bold mb-4 text-center text-uppercase" style="color: var(--deep-rose); letter-spacing: 1px;">অর্ডার ফর্ম</h4>
                 <form id="orderForm">
                     <div id="product-variants">
-                        <div class="variant-item p-3 rounded-3 mb-3" style="background: #f8f9fa; border: 1px solid #eee;">
+                        <div class="variant-item">
                             <div class="row g-2">
                                 <div class="col-5">
-                                    <label class="form-label">সাইজ</label>
-                                    <select class="form-select" name="size[]">
+                                    <label class="small fw-bold">সাইজ</label>
+                                    <select class="form-select" name="size[]" required>
                                         <option value="32">32</option><option value="34">34</option><option value="36">36</option>
                                         <option value="38">38</option><option value="40">40</option><option value="42">42</option>
                                         <option value="44">44</option><option value="46">46</option>
                                     </select>
                                 </div>
                                 <div class="col-4">
-                                    <label class="form-label">কালার</label>
-                                    <select class="form-select" name="color[]">
-                                        <option value="Orange">Orange</option><option value="Coffee">Coffee</option>
-                                        <option value="Pink">Pink</option><option value="Maroon">Maroon</option>
+                                    <label class="small fw-bold">কালার</label>
+                                    <select class="form-select" name="color[]" required>
+                                        <option value="Orange">Orange</option>
+                                        <option value="Coffee">Coffee</option>
+                                        <option value="Pink">Pink</option>
+                                        <option value="Maroon">Maroon</option>
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <label class="form-label">পরিমাণ</label>
+                                    <label class="small fw-bold">পরিমাণ</label>
                                     <input type="number" class="form-control qty-input" name="qty[]" value="1" min="1" onchange="calculateTotal()">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-light btn-sm w-100 mb-4 border" onclick="addMore()">+ আইটেম যোগ করুন</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm mb-4 w-100 fw-bold" onclick="addMore()">+ আইটেম যোগ করুন</button>
 
                     <div class="mb-4">
-                        <label class="form-label d-block mb-2">ডেলিভারি এলাকা নির্বাচন করুন:</label>
-                        <div class="row g-2">
-                            <div class="col-6">
+                        <label class="fw-bold mb-2">ডেলিভারি এলাকা:</label>
+                        <div class="d-flex gap-2">
+                            <div class="flex-grow-1">
                                 <input type="radio" name="shipping" value="70" id="dhaka" class="btn-check" checked onchange="calculateTotal()">
-                                <label for="dhaka" class="btn btn-outline-secondary w-100 py-2">ঢাকার ভিতর</label>
+                                <label for="dhaka" class="shipping-option">ঢাকার ভিতরে (৭০৳)</label>
                             </div>
-                            <div class="col-6">
+                            <div class="flex-grow-1">
                                 <input type="radio" name="shipping" value="120" id="outside" class="btn-check" onchange="calculateTotal()">
-                                <label for="outside" class="btn btn-outline-secondary w-100 py-2">ঢাকার বাহির</label>
+                                <label for="outside" class="shipping-option">ঢাকার বাইরে (১২০৳)</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="total-bill-area mb-4">
-                        <div class="d-flex justify-content-between mb-2"><span>আইটেম মূল্য:</span> <span id="prodPrice">530</span>৳</div>
-                        <div class="d-flex justify-content-between mb-2"><span>ডেলিভারি চার্জ:</span> <span id="shipCharge">70</span>৳</div>
-                        <div class="d-flex justify-content-between border-top pt-2 fw-bold fs-5 text-danger"><span>সর্বমোট:</span> <span><span id="totalBill">600</span>৳</span></div>
+                        <div class="d-flex justify-content-between small opacity-75"><span>আইটেম মূল্য:</span> <span><span id="prodPrice">530</span> ৳</span></div>
+                        <div class="d-flex justify-content-between small opacity-75"><span>ডেলিভারি চার্জ:</span> <span><span id="shipCharge">70</span> ৳</span></div>
+                        <hr class="my-2 border-secondary">
+                        <div class="d-flex justify-content-between fw-bold fs-4 text-warning"><span>মোট বিল:</span> <span><span id="totalBill">600</span> ৳</span></div>
                     </div>
 
                     <div class="mb-4">
-                        <input type="text" class="form-control mb-3" name="name" id="cust_name" placeholder="আপনার নাম" required>
-                        <input type="tel" class="form-control mb-3" name="phone" id="cust_phone" placeholder="মোবাইল নম্বর" required>
-                        <textarea class="form-control" name="address" id="cust_address" rows="2" placeholder="সম্পূর্ণ ঠিকানা" required></textarea>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" name="name" id="cust_name" placeholder="আপনার সম্পূর্ণ নাম" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                            <input type="tel" class="form-control" name="phone" id="cust_phone" placeholder="সচল মোবাইল নম্বর" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                            <textarea class="form-control" name="address" id="cust_address" rows="2" placeholder="পুরো ঠিকানা (জেলা, উপজেলাসহ)" required></textarea>
+                        </div>
                     </div>
 
-                    <button type="submit" class="btn btn-confirm w-100 shadow-lg" id="submitBtn">অর্ডার প্লেস করুন</button>
+                    <button type="submit" class="btn btn-confirm" id="submitBtn">অর্ডার কনফার্ম করুন <i class="fas fa-shopping-bag ms-2"></i></button>
+                    
+                    <div class="trust-badge">
+                        <div class="badge-item"><i class="fas fa-truck-loading"></i>ক্যাশ অন ডেলিভারি</div>
+                        <div class="badge-item"><i class="fas fa-shield-alt"></i>কোয়ালিটি গ্যারান্টি</div>
+                        <div class="badge-item"><i class="fas fa-undo"></i>রিটার্ন পলিসি</div>
+                    </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Contact Section -->
+    <div class="contact-section text-center">
+        <h3 class="fw-bold mb-4" style="color: var(--deep-rose);">প্রয়োজনে আমাদের কল করুন</h3>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <div class="p-3 border rounded-4">
+                    <i class="fab fa-whatsapp mb-2 fs-1 text-success"></i>
+                    <p class="mb-1 fw-bold">হোয়াটসঅ্যাপ / ইমো</p>
+                    <a href="https://wa.me/8801922364432" class="text-decoration-none fs-5">01922364432</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="p-3 border rounded-4">
+                    <i class="fas fa-envelope mb-2 fs-1 text-primary"></i>
+                    <p class="mb-1 fw-bold">অফিসিয়াল ইমেইল</p>
+                    <a href="mailto:dizaradealersjashore@gmail.com" class="text-decoration-none">dizaradealersjashore@gmail.com</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- প্রফেশনাল ফুটার -->
-<footer class="bg-white border-top py-5">
-    <div class="container text-center">
-        <div class="mb-4">
-            <h5 class="fw-bold color-rose">Dizara Dealers Jashore</h5>
-            <p class="text-muted">যশোরের বিশ্বস্ত অন্তর্বাস বিক্রেতা। আমরা সারা বাংলাদেশে ক্যাশ অন ডেলিভারি দেই।</p>
+<footer class="text-center">
+    <div class="container">
+        <div class="mb-3">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
         </div>
-        <div class="d-flex justify-content-center gap-4 mb-4">
-            <a href="tel:01922364432" class="text-dark text-decoration-none"><i class="fas fa-phone text-primary"></i> ০১৯২২৩৬৪৪৩২</a>
-            <a href="mailto:dizaradealersjashore@gmail.com" class="text-dark text-decoration-none"><i class="fas fa-envelope text-danger"></i> ইমেইল করুন</a>
-        </div>
-        <p class="small text-muted mb-0">© ২০২৬ Dizara Dealers Jashore. All rights reserved.</p>
+        <p class="mb-0 opacity-75">© ২০২৬ সর্বস্বত্ব সংরক্ষিত | <b>Dizara Dealers Jashore</b></p>
     </div>
 </footer>
 
-<div id="loadingOverlay">
-    <div class="spinner mb-3"></div>
-    <h5 class="fw-bold">অর্ডার প্রসেস হচ্ছে...</h5>
+<!-- Receipt Content (Hidden) -->
+<div id="receipt-wrap">
+    <div id="receipt-content">
+        <div style="text-align: center; border-bottom: 2px solid #e84393; padding-bottom: 20px; margin-bottom: 20px;">
+            <h1 style="color: #e84393; margin:0; font-size: 32px;">Dizara Dealers Jashore</h1>
+            <p style="margin:5px 0; color: #555;">অর্ডার ইনভয়েস / Order Invoice</p>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <p><strong>নাম:</strong> <span id="r_name"></span></p>
+            <p><strong>মোবাইল:</strong> <span id="r_phone"></span></p>
+            <p><strong>তারিখ:</strong> <span id="r_date"></span></p>
+        </div>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+                <tr style="background: #e84393; color: #fff;">
+                    <th style="padding: 10px; border: 1px solid #ddd;">আইটেম বর্ণনা</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">পরিমাণ</th>
+                </tr>
+            </thead>
+            <tbody id="r_items"></tbody>
+        </table>
+        <div style="text-align: right; font-size: 20px; font-weight: bold;">
+            মোট বিল: <span id="r_total"></span> ৳
+        </div>
+    </div>
 </div>
 
 <script>
-    // ক্যালকুলেশন এবং অন্যান্য লজিক (আগের মতোই থাকবে)
     function addMore() {
         const wrapper = document.getElementById('product-variants');
         const newItem = wrapper.children[0].cloneNode(true);
         if(!newItem.querySelector('.remove-btn')){
             const btn = document.createElement('span');
-            btn.innerHTML = '<i class="fas fa-times-circle"></i>';
-            btn.style.cssText = "position:absolute; right:-5px; top:-5px; color:#ff7675; cursor:pointer; background:#fff; border-radius:50%; font-size:20px;";
+            btn.className = "remove-btn"; btn.innerHTML = '<i class="fas fa-times"></i>';
             btn.onclick = function() { this.parentElement.remove(); calculateTotal(); };
-            newItem.style.position = "relative";
             newItem.appendChild(btn);
         }
         wrapper.appendChild(newItem);
+        calculateTotal();
     }
 
     function calculateTotal() {
@@ -280,15 +312,75 @@
         document.getElementById('totalBill').innerText = pPrice + ship;
     }
 
-    // ফরম সাবমিট হ্যান্ডলার (অপরিবর্তিত)
+    async function downloadReceipt() {
+        const element = document.getElementById('receipt-content');
+        const canvas = await html2canvas(element, { scale: 2 });
+        const link = document.createElement('a');
+        link.download = 'Dizara-Invoice-' + Date.now() + '.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }
+
     document.getElementById('orderForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        document.getElementById('loadingOverlay').style.display = 'flex';
-        // (এখানে আপনার আগের স্ক্রিপ্ট কোডটি যোগ করে দিন)
-        setTimeout(() => { // ডেমো হিসেবে টাইমআউট দেওয়া
-            document.getElementById('loadingOverlay').style.display = 'none';
-            Swal.fire('সফল!', 'অর্ডারটি গ্রহণ করা হয়েছে।', 'success');
-        }, 2000);
+        
+        Swal.fire({
+            title: 'অর্ডারটি কনফার্ম করতে চান?',
+            text: "আপনার তথ্যগুলো সব ঠিক আছে তো?",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#27ae60',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'হ্যাঁ, কনফার্ম করুন',
+            cancelButtonText: 'আবার চেক করি'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('loadingOverlay').style.display = 'flex';
+                const btn = document.getElementById('submitBtn');
+                btn.disabled = true;
+
+                document.getElementById('r_name').innerText = document.getElementById('cust_name').value;
+                document.getElementById('r_phone').innerText = document.getElementById('cust_phone').value;
+                document.getElementById('r_date').innerText = new Date().toLocaleDateString('bn-BD');
+                document.getElementById('r_total').innerText = document.getElementById('totalBill').innerText;
+                
+                let items = '';
+                const sz = document.getElementsByName('size[]');
+                const cl = document.getElementsByName('color[]');
+                const qt = document.getElementsByName('qty[]');
+                for(let i=0; i<sz.length; i++){
+                    items += `<tr><td style="padding: 10px; border: 1px solid #ddd;">Size: ${sz[i].value} | Color: ${cl[i].value}</td><td style="padding: 10px; border: 1px solid #ddd; text-align:center;">${qt[i].value} টি</td></tr>`;
+                }
+                document.getElementById('r_items').innerHTML = items;
+
+                const formData = new FormData(this);
+                formData.append('total_bill', document.getElementById('totalBill').innerText);
+
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbyB4jpAtnwxBYf_7aCphhwVnTQJkOkVmU_6xp3E2iSoT7k8IR0rpr5C_MQ09A7amSrr/exec';
+
+                fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    Swal.fire({
+                        title: 'অভিনন্দন!',
+                        text: 'আপনার অর্ডারটি সফলভাবে আমাদের কাছে পৌঁছেছে।',
+                        icon: 'success',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3498db',
+                        confirmButtonText: 'ইনভয়েস ডাউনলোড করুন',
+                        cancelButtonText: 'ঠিক আছে'
+                    }).then((res) => {
+                        if (res.isConfirmed) downloadReceipt();
+                        setTimeout(() => location.reload(), 3000);
+                    });
+                })
+                .catch(error => {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    Swal.fire('দুঃখিত!', 'সার্ভারের সাথে কানেক্ট হতে সমস্যা হচ্ছে। আবার চেষ্টা করুন।', 'error');
+                    btn.disabled = false;
+                });
+            }
+        });
     });
 </script>
 
