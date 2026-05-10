@@ -14,6 +14,25 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID'); // এখানে আপনার পিক্সেল আইডি বসান
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+    <img height="1" width="1" style="display:none" 
+         src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
     <style>
         :root { 
             --accent-pink: #fd79a8; 
@@ -359,10 +378,12 @@
                 const btn = document.getElementById('submitBtn');
                 btn.disabled = true;
 
+                const finalBill = document.getElementById('totalBill').innerText;
+
                 document.getElementById('r_name').innerText = document.getElementById('cust_name').value;
                 document.getElementById('r_phone').innerText = document.getElementById('cust_phone').value;
                 document.getElementById('r_date').innerText = new Date().toLocaleDateString('bn-BD');
-                document.getElementById('r_total').innerText = document.getElementById('totalBill').innerText;
+                document.getElementById('r_total').innerText = finalBill;
                 
                 let items = '';
                 const sz = document.getElementsByName('size[]');
@@ -374,12 +395,20 @@
                 document.getElementById('r_items').innerHTML = items;
 
                 const formData = new FormData(this);
-                formData.append('total_bill', document.getElementById('totalBill').innerText);
+                formData.append('total_bill', finalBill);
 
                 const scriptURL = 'https://script.google.com/macros/s/AKfycbyB4jpAtnwxBYf_7aCphhwVnTQJkOkVmU_6xp3E2iSoT7k8IR0rpr5C_MQ09A7amSrr/exec';
 
                 fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
+                    // Facebook Purchase Tracking
+                    if(typeof fbq !== 'undefined') {
+                        fbq('track', 'Purchase', {
+                            value: finalBill,
+                            currency: 'BDT'
+                        });
+                    }
+
                     document.getElementById('loadingOverlay').style.display = 'none';
                     Swal.fire({
                         title: 'অভিনন্দন!',
